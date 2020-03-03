@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("http://www.xiaomujin.club"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+ <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/b6dbddb6.js","daovoice")
+ daovoice('init', {
+  app_id: "ee5c03d0"
+});
+daovoice('update');
+ </script>
+
+
+
+
+  <meta name="description" content="各种功能不定时更新中本文将讲述一些Hexo博客的美化，不同主题可能方法有些不同实际效果欢迎访问我的博客：https://www.xiaomujin.club/ 进行查看，本文章会不定时进行更新。文章涉及有关参考资料、教程、链接如有侵权请联系我删除！">
+<meta name="keywords" content="Hexo博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客美化">
+<meta property="og:url" content="https://www.xiaomujin.club/2019/07/17/hexo博客美化/index.html">
+<meta property="og:site_name" content="记录生活，记录故事">
+<meta property="og:description" content="各种功能不定时更新中本文将讲述一些Hexo博客的美化，不同主题可能方法有些不同实际效果欢迎访问我的博客：https://www.xiaomujin.club/ 进行查看，本文章会不定时进行更新。文章涉及有关参考资料、教程、链接如有侵权请联系我删除！">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/8.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/9.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/9.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/10.gif">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/11.gif">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/12.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/13.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/14.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/15.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/16.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/17.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/18.png">
+<meta property="og:updated_time" content="2019-08-02T09:57:08.570Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo博客美化">
+<meta name="twitter:description" content="各种功能不定时更新中本文将讲述一些Hexo博客的美化，不同主题可能方法有些不同实际效果欢迎访问我的博客：https://www.xiaomujin.club/ 进行查看，本文章会不定时进行更新。文章涉及有关参考资料、教程、链接如有侵权请联系我删除！">
+<meta name="twitter:image" content="https://xuqian.xiaomujin.club/8.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="记录生活，记录故事" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://www.xiaomujin.club/2019/07/17/hexo博客美化/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>Hexo博客美化 | 记录生活，记录故事</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c06e8ff14515b26aea85461e16a55626";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/shiqihennuan" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">记录生活，记录故事</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">身体和灵魂，总要有一个在路上。</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-主页">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>主页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-归档">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">16</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-留言">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/guestbook" rel="section"><i class="menu-item-icon fa fa-fw fa-envelope"></i> <br>留言</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-邻居">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/friends" rel="section"><i class="menu-item-icon fa fa-fw fa-users"></i> <br>邻居</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.xiaomujin.club/2019/07/17/hexo博客美化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+      <meta itemprop="name" content="莫子谦">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/author.png">
+ 
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录生活，记录故事">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hexo博客美化
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-17 19:00:00" itemprop="dateCreated datePublished" datetime="2019-07-17T19:00:00+08:00">2019-07-17</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-02 17:57:08" itemprop="dateModified" datetime="2019-08-02T17:57:08+08:00">2019-08-02</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i> 本文 ≈
+              </span>
+              
+              <span title="本文字数">17k</span>
+            </span>字
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i> 阅读时长 ≈
+              </span>
+              
+              <span title="阅读时长">16 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="各种功能不定时更新中"><a href="#各种功能不定时更新中" class="headerlink" title="各种功能不定时更新中"></a>各种功能不定时更新中</h1><p>本文将讲述一些Hexo博客的美化，不同主题可能方法有些不同实际效果欢迎访问我的博客：<a href="https://www.xiaomujin.club/">https://www.xiaomujin.club/</a> 进行查看，本文章会不定时进行更新。文章涉及有关参考资料、教程、链接如有侵权请联系我删除！<br><a id="more"></a></p>
+<h2 id="文章目录："><a href="#文章目录：" class="headerlink" title="文章目录："></a>文章目录：</h2><p><font color="red">– 添加卡通人物（看板娘）</font></p>
+<p><font color="red">– 添加鼠标点击爱心效果</font></p>
+<p><font color="red">– 添加鼠标点击显示字体效果</font></p>
+<p><font color="red">– 添加鼠标点击烟花爆炸效果</font></p>
+<p><font color="red">– 添加彩色滚动变换字体</font></p>
+<p><font color="red">– 添加背景音乐</font></p>
+<p><font color="red">– 背景添加动态线条效果</font></p>
+<p><font color="red">– 添加人体时钟等有趣的挂件</font></p>
+<p><font color="red">– 添加背景动态彩带效果</font></p>
+<p><font color="red">– 添加背景代码雨特效</font></p>
+<h1 id="–-添加卡通人物（看板娘）"><a href="#–-添加卡通人物（看板娘）" class="headerlink" title="– 添加卡通人物（看板娘）"></a>– 添加卡通人物（看板娘）</h1><p>我在逛别人博客的时候偶然发现右下角居然有一个萌萌的卡通人物，还能根据你鼠标位置摇头，瞬间被吸引到了，赶紧也给自己博客添加一个吧！<a href="https://github.com/EYHN/hexo-helper-live2d" target="_blank" rel="noopener">点击此处</a>进入该项目地址<br>在博客文件夹输入如下命令获取 live2d ：</p>
+<pre><code>npm install --save hexo-helper-live2d
+</code></pre><p>输入以下命令，下载相应的模型，将 <font color="red">packagename</font> 更换成模型名称即可，更多模型选择<a href="https://github.com/xiazeyu/live2d-widget-models" target="_blank" rel="noopener">请点击此处</a>，各个模型的预览请访问<a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener">原作者的博客</a></p>
+<pre><code>npm install packagename
+</code></pre><p>打开站点目录下或者主题目录的 <font color="red">_config.yml</font> 文件，添加如下代码：</p>
+<pre><code>live2d:
+enable: true
+scriptFrom: local
+model: 
+    use: live2d-widget-model-haruto #模型选择
+display: 
+    position: right  #模型位置
+    width: 150       #模型宽度
+    height: 300      #模型高度
+mobile: 
+    show: false      #是否在手机端显示
+</code></pre><p>设置好过后我们就拥有了一个卡通人物</p>
+<p><img src="https://xuqian.xiaomujin.club/8.png" alt="看板娘"></p>
+<h1 id="–-添加鼠标点击爱心效果"><a href="#–-添加鼠标点击爱心效果" class="headerlink" title="– 添加鼠标点击爱心效果"></a>– 添加鼠标点击爱心效果</h1><pre><code>! function(e, t, a) {
+function n() { c(&quot;.heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: &apos;&apos;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 500%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}&quot;), o(), r() }
+
+function r() {
+    for (var e = 0; e &lt; d.length; e++) d[e].alpha &lt;= 0 ? (t.body.removeChild(d[e].el), d.splice(e, 1)) : (d[e].y--, d[e].scale += .004, d[e].alpha -= .013, d[e].el.style.cssText = &quot;left:&quot; + d[e].x + &quot;px;top:&quot; + d[e].y + &quot;px;opacity:&quot; + d[e].alpha + &quot;;transform:scale(&quot; + d[e].scale + &quot;,&quot; + d[e].scale + &quot;) rotate(45deg);background:&quot; + d[e].color + &quot;;z-index:99999&quot;);
+    requestAnimationFrame(r)
+}
+
+function o() {
+    var t = &quot;function&quot; == typeof e.onclick &amp;&amp; e.onclick;
+    e.onclick = function(e) { t &amp;&amp; t(), i(e) }
+}
+
+function i(e) {
+    var a = t.createElement(&quot;div&quot;);
+    a.className = &quot;heart&quot;, d.push({ el: a, x: e.clientX - 5, y: e.clientY - 5, scale: 1, alpha: 1, color: s() }), t.body.appendChild(a)
+}
+
+function c(e) {
+    var a = t.createElement(&quot;style&quot;);
+    a.type = &quot;text/css&quot;;
+    try { a.appendChild(t.createTextNode(e)) } catch (t) { a.styleSheet.cssText = e }
+    t.getElementsByTagName(&quot;head&quot;)[0].appendChild(a)
+}
+
+function s() { return &quot;rgb(&quot; + ~~(255 * Math.random()) + &quot;,&quot; + ~~(255 * Math.random()) + &quot;,&quot; + ~~(255 * Math.random()) + &quot;)&quot; }
+var d = [];
+e.requestAnimationFrame = function() { return e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function(e) { setTimeout(e, 1e3 / 60) } }(), n()
+}(window, document);
+</code></pre><p>在 \themes\yilia\layout\layout.ejs 文件末尾添加以下代码：</p>
+<pre><code>&lt;!-- 页面点击小红心 --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/js/love.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>完成以上操作后，当我们点击鼠标的时候就可以看见爱心的特效了<br><img src="https://xuqian.xiaomujin.club/9.png" alt="点击文字效果"></p>
+<h1 id="–-添加鼠标点击显示字体效果"><a href="#–-添加鼠标点击显示字体效果" class="headerlink" title="– 添加鼠标点击显示字体效果"></a>– 添加鼠标点击显示字体效果</h1><p>在 <font color="red">/themes/yilia/source/js</font> 下新建文件 <font color="red">click_show_text.js</font>，在 <font color="red">click_show_text.js</font> 文件中添加以下代码：：</p>
+<pre><code>var a_idx = 0;
+jQuery(document).ready(function($) {
+    $(&quot;body&quot;).click(function(e) {
+        var a = new Array
+        (&quot;富强&quot;, &quot;民主&quot;, &quot;文明&quot;, &quot;和谐&quot;, &quot;自由&quot;, &quot;平等&quot;, &quot;公正&quot;, &quot;法治&quot;, &quot;爱国&quot;, &quot;敬业&quot;, &quot;诚信&quot;, &quot;友善&quot;);
+        var $i = $(&quot;&lt;span/&gt;&quot;).text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        $i.css({
+            &quot;z-index&quot;: 5,
+            &quot;top&quot;: y - 20,
+            &quot;left&quot;: x,
+            &quot;position&quot;: &quot;absolute&quot;,
+            &quot;font-weight&quot;: &quot;bold&quot;,
+            &quot;color&quot;: &quot;#FF0000&quot;
+        });
+        $(&quot;body&quot;).append($i);
+        $i.animate({
+            &quot;top&quot;: y - 180,
+            &quot;opacity&quot;: 0
+        },
+            3000,
+            function() {
+                $i.remove();
+            });
+    });
+    setTimeout(&apos;delay()&apos;, 2000);
+});
+
+function delay() {
+    $(&quot;.buryit&quot;).removeAttr(&quot;onclick&quot;);
+}
+</code></pre><p>其中的社会主义核心价值观可以根据你自己的创意替换为其他文字，然后在 <font color="red">\themes\yilia\layout\layout.ejs</font> 文件末尾添加以下代码：</p>
+<pre><code>&lt;!--单击显示文字--&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/js/click_show_text.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>最终实现效果如下:<br><img src="https://xuqian.xiaomujin.club/9.png" alt="点击文字效果"></p>
+<h1 id="–-添加鼠标点击烟花爆炸效果"><a href="#–-添加鼠标点击烟花爆炸效果" class="headerlink" title="– 添加鼠标点击烟花爆炸效果"></a>– 添加鼠标点击烟花爆炸效果</h1><p>在 <font color="red">\themes\yilia\source\js</font> 目录下新建一个 <font color="red">fireworks.js</font> 的文件，里面写入以下代码：</p>
+<pre><code>&quot;use strict&quot;;function updateCoords(e){pointerX=(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top}function setParticuleDirection(e){var t=anime.random(0,360)*Math.PI/180,a=anime.random(50,180),n=[-1,1][anime.random(0,1)]*a;return{x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)}}function createParticule(e,t){var a={};return a.x=e,a.y=t,a.color=colors[anime.random(0,colors.length-1)],a.radius=anime.random(16,32),a.endPos=setParticuleDirection(a),a.draw=function(){ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle=a.color,ctx.fill()},a}function createCircle(e,t){var a={};return a.x=e,a.y=t,a.color=&quot;#F00&quot;,a.radius=0.1,a.alpha=0.5,a.lineWidth=6,a.draw=function(){ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=1},a}function renderParticule(e){for(var t=0;t&lt;e.animatables.length;t++){e.animatables[t].target.draw()}}function animateParticules(e,t){for(var a=createCircle(e,t),n=[],i=0;i&lt;numberOfParticules;i++){n.push(createParticule(e,t))}anime.timeline().add({targets:n,x:function(e){return e.endPos.x},y:function(e){return e.endPos.y},radius:0.1,duration:anime.random(1200,1800),easing:&quot;easeOutExpo&quot;,update:renderParticule}).add({targets:a,radius:anime.random(80,160),lineWidth:0,alpha:{value:0,easing:&quot;linear&quot;,duration:anime.random(600,800)},duration:anime.random(1200,1800),easing:&quot;easeOutExpo&quot;,update:renderParticule,offset:0})}function debounce(e,t){var a;return function(){var n=this,i=arguments;clearTimeout(a),a=setTimeout(function(){e.apply(n,i)},t)}}var canvasEl=document.querySelector(&quot;.fireworks&quot;);if(canvasEl){var ctx=canvasEl.getContext(&quot;2d&quot;),numberOfParticules=30,pointerX=0,pointerY=0,tap=&quot;mousedown&quot;,colors=[&quot;#FF1461&quot;,&quot;#18FF92&quot;,&quot;#5A87FF&quot;,&quot;#FBF38C&quot;],setCanvasSize=debounce(function(){canvasEl.width=2*window.innerWidth,canvasEl.height=2*window.innerHeight,canvasEl.style.width=window.innerWidth+&quot;px&quot;,canvasEl.style.height=window.innerHeight+&quot;px&quot;,canvasEl.getContext(&quot;2d&quot;).scale(2,2)},500),render=anime({duration:1/0,update:function(){ctx.clearRect(0,0,canvasEl.width,canvasEl.height)}});document.addEventListener(tap,function(e){&quot;sidebar&quot;!==e.target.id&amp;&amp;&quot;toggle-sidebar&quot;!==e.target.id&amp;&amp;&quot;A&quot;!==e.target.nodeName&amp;&amp;&quot;IMG&quot;!==e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))},!1),setCanvasSize(),window.addEventListener(&quot;resize&quot;,setCanvasSize,!1)}&quot;use strict&quot;;function updateCoords(e){pointerX=(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top}function setParticuleDirection(e){var t=anime.random(0,360)*Math.PI/180,a=anime.random(50,180),n=[-1,1][anime.random(0,1)]*a;return{x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)}}function createParticule(e,t){var a={};return a.x=e,a.y=t,a.color=colors[anime.random(0,colors.length-1)],a.radius=anime.random(16,32),a.endPos=setParticuleDirection(a),a.draw=function(){ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle=a.color,ctx.fill()},a}function createCircle(e,t){var a={};return a.x=e,a.y=t,a.color=&quot;#F00&quot;,a.radius=0.1,a.alpha=0.5,a.lineWidth=6,a.draw=function(){ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=1},a}function renderParticule(e){for(var t=0;t&lt;e.animatables.length;t++){e.animatables[t].target.draw()}}function animateParticules(e,t){for(var a=createCircle(e,t),n=[],i=0;i&lt;numberOfParticules;i++){n.push(createParticule(e,t))}anime.timeline().add({targets:n,x:function(e){return e.endPos.x},y:function(e){return e.endPos.y},radius:0.1,duration:anime.random(1200,1800),easing:&quot;easeOutExpo&quot;,update:renderParticule}).add({targets:a,radius:anime.random(80,160),lineWidth:0,alpha:{value:0,easing:&quot;linear&quot;,duration:anime.random(600,800)},duration:anime.random(1200,1800),easing:&quot;easeOutExpo&quot;,update:renderParticule,offset:0})}function debounce(e,t){var a;return function(){var n=this,i=arguments;clearTimeout(a),a=setTimeout(function(){e.apply(n,i)},t)}}var canvasEl=document.querySelector(&quot;.fireworks&quot;);if(canvasEl){var ctx=canvasEl.getContext(&quot;2d&quot;),numberOfParticules=30,pointerX=0,pointerY=0,tap=&quot;mousedown&quot;,colors=[&quot;#FF1461&quot;,&quot;#18FF92&quot;,&quot;#5A87FF&quot;,&quot;#FBF38C&quot;],setCanvasSize=debounce(function(){canvasEl.width=2*window.innerWidth,canvasEl.height=2*window.innerHeight,canvasEl.style.width=window.innerWidth+&quot;px&quot;,canvasEl.style.height=window.innerHeight+&quot;px&quot;,canvasEl.getContext(&quot;2d&quot;).scale(2,2)},500),render=anime({duration:1/0,update:function(){ctx.clearRect(0,0,canvasEl.width,canvasEl.height)}});document.addEventListener(tap,function(e){&quot;sidebar&quot;!==e.target.id&amp;&amp;&quot;toggle-sidebar&quot;!==e.target.id&amp;&amp;&quot;A&quot;!==e.target.nodeName&amp;&amp;&quot;IMG&quot;!==e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))},!1),setCanvasSize(),window.addEventListener(&quot;resize&quot;,setCanvasSize,!1)};
+</code></pre><p>然后在  <font color="red">\themes\yilia\layout\layout.ejs</font> 文件中写入以下代码：</p>
+<pre><code>&lt;canvas class=&quot;fireworks&quot; style=&quot;position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;&quot; &gt;&lt;/canvas&gt; 
+&lt;script type=&quot;text/javascript&quot; src=&quot;//cdn.bootcss.com/animejs/2.2.0/anime.min.js&quot;&gt;&lt;/script&gt; 
+&lt;script type=&quot;text/javascript&quot; src=&quot;/js/fireworks.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>最终效果：</p>
+<p><img src="https://xuqian.xiaomujin.club/10.gif" alt="爆炸效果"></p>
+<h1 id="–-添加彩色滚动变换字体"><a href="#–-添加彩色滚动变换字体" class="headerlink" title="– 添加彩色滚动变换字体"></a>– 添加彩色滚动变换字体</h1><p>在你想要添加彩色滚动变换字体的地方写入以下代码即可，其中文字可自行更改：</p>
+<pre><code>&lt;div id=&quot;binft&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+    var binft = function (r) {
+    function t() {
+        return b[Math.floor(Math.random() * b.length)]
+    }  
+    function e() {
+        return String.fromCharCode(94 * Math.random() + 33)
+    }
+    function n(r) {
+        for (var n = document.createDocumentFragment(), i = 0; r &gt; i; i++) {
+        var l = document.createElement(&quot;span&quot;);
+        l.textContent = e(), l.style.color = t(), n.appendChild(l)
+        }
+        return n
+    }
+    function i() {
+        var t = o[c.skillI];
+        c.step ? c.step-- : (c.step = g, c.prefixP &lt; l.length ? (c.prefixP &gt;= 0 &amp;&amp; (c.text += l[c.prefixP]), c.prefixP++) : &quot;forward&quot; === c.direction ? c.skillP &lt; t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = &quot;backward&quot;, c.delay = a) : c.skillP &gt; 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = &quot;forward&quot;)), r.textContent = c.text, r.appendChild(n(c.prefixP &lt; l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+    }
+    var l = &quot;&quot;,
+    o = [&quot;青青陵上柏，磊磊涧中石。&quot;, &quot;人生天地间，忽如远行客。&quot;,&quot;斗酒相娱乐，聊厚不为薄。&quot;, &quot;驱车策驽马，游戏宛与洛。&quot;,&quot;洛中何郁郁，冠带自相索。&quot;,&quot;长衢罗夹巷，王侯多第宅。&quot;,&quot;两宫遥相望，双阙百余尺。&quot;,&quot;极宴娱心意，戚戚何所迫？&quot;].map(function (r) {
+    return r + &quot;&quot;
+    }),
+    a = 2,
+    g = 1,
+    s = 5,
+    d = 75,
+    b = [&quot;rgb(110,64,170)&quot;, &quot;rgb(150,61,179)&quot;, &quot;rgb(191,60,175)&quot;, &quot;rgb(228,65,157)&quot;, &quot;rgb(254,75,131)&quot;, &quot;rgb(255,94,99)&quot;, &quot;rgb(255,120,71)&quot;, &quot;rgb(251,150,51)&quot;, &quot;rgb(226,183,47)&quot;, &quot;rgb(198,214,60)&quot;, &quot;rgb(175,240,91)&quot;, &quot;rgb(127,246,88)&quot;, &quot;rgb(82,246,103)&quot;, &quot;rgb(48,239,130)&quot;, &quot;rgb(29,223,163)&quot;, &quot;rgb(26,199,194)&quot;, &quot;rgb(35,171,216)&quot;, &quot;rgb(54,140,225)&quot;, &quot;rgb(76,110,219)&quot;, &quot;rgb(96,84,200)&quot;],
+    c = {
+        text: &quot;&quot;,
+        prefixP: -s,
+        skillI: 0,
+        skillP: 0,
+        direction: &quot;forward&quot;,
+        delay: a,
+        step: g
+    };
+    i()
+    };
+    binft(document.getElementById(&apos;binft&apos;));
+&lt;/script&gt;
+</code></pre><p>最终效果：</p>
+<p><img src="https://xuqian.xiaomujin.club/11.gif" alt="爆炸效果"></p>
+<h1 id="–-添加背景音乐"><a href="#–-添加背景音乐" class="headerlink" title="– 添加背景音乐"></a>– 添加背景音乐</h1><p>打开<a href="https://music.163.com/" target="_blank" rel="noopener">网页版网易云音乐</a>，选择你准备添加的背景音乐，点击生成外链播放器，前提是要有版权，不然是无法生成外链播放器的，复制底下的HTML代码<br><img src="https://xuqian.xiaomujin.club/12.png" alt="网易云音乐"><br><img src="https://xuqian.xiaomujin.club/13.png" alt="网易云音乐"><br>然后将此代码放到你想要放的地方，比如放在博客的左侧，则打开 <font color="red">\yilia\layout_partial\left-col.ejs</font> 文件，将复制的HTML代码粘贴进去，再进行适当的位置设置让播放器更美观，其中 <font color="red">auto=1</font> 表示打开网页自动播放音乐，auto=0 表示关闭自动播放音乐。<br><img src="https://xuqian.xiaomujin.club/14.png" alt="网易云音乐"></p>
+<h1 id="–-背景添加动态线条效果"><a href="#–-背景添加动态线条效果" class="headerlink" title="– 背景添加动态线条效果"></a>– 背景添加动态线条效果</h1><p>在 <font color="red">\themes\yilia\layout\layout.ejs</font> 文件中添加如下代码：</p>
+<pre><code>&lt;!--动态线条背景--&gt;
+&lt;script type=&quot;text/javascript&quot;
+color=&quot;220,220,220&quot; opacity=&apos;0.7&apos; zIndex=&quot;-2&quot; count=&quot;200&quot; src=&quot;//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js&quot;&gt;
+&lt;/script&gt;
+</code></pre><p>其中：</p>
+<ul>
+<li>color：表示线条颜色，三个数字分别为(R,G,B)，默认：（0,0,0）</li>
+<li>opacity：表示线条透明度（0~1），默认：0.5</li>
+<li>count：表示线条的总数量，默认：150</li>
+<li>zIndex：表示背景的z-index属性，css属性用于控制所在层的位置，默认：-1</li>
+</ul>
+<p>最终实现效果：</p>
+<p><img src="https://xuqian.xiaomujin.club/15.png" alt="动态线条"></p>
+<h1 id="–-添加人体时钟等有趣的挂件"><a href="#–-添加人体时钟等有趣的挂件" class="headerlink" title="– 添加人体时钟等有趣的挂件"></a>– 添加人体时钟等有趣的挂件</h1><p>无意中发现了个有趣的人体时钟 HONE HONE CLOCK，作者是个日本人，<a href="http://chabudai.org/blog/" target="_blank" rel="noopener">点击此处</a>访问作者博客，<a href="http://chabudai.org/blog/?p=59" target="_blank" rel="noopener">点击此处</a>在作者原博客上查看动态样式，如果你的博客上有合适的地方，加上一个人体时钟会很有趣的。</p>
+<p><img src="https://xuqian.xiaomujin.club/16.png" alt="人体时钟"></p>
+<p>实现代码：</p>
+<pre><code>&lt;!--人体时钟背景透明--&gt;
+&lt;script charset=&quot;Shift_JIS&quot; src=&quot;http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.js&quot;&gt;&lt;/script&gt;
+
+&lt;!--人体时钟背景白--&gt;
+&lt;script charset=&quot;Shift_JIS&quot; src=&quot;http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>其他网页小挂件推荐：</p>
+<ul>
+<li><a href="http://abowman.com/" target="_blank" rel="noopener">http://abowman.com/</a> 里面有很多有趣的小挂件，可以养养鱼、龟、狗、仓鼠等各式各样的虚拟宠物，能根据你的鼠标指针位置移动，直接复制代码就可以用</li>
+<li><a href="http://www.revolvermaps.com/" target="_blank" rel="noopener">http://www.revolvermaps.com/</a> 它提供网站访客地理信息，可以以2D、3D等形式显示</li>
+<li><a href="http://www.amazingcounters.com/" target="_blank" rel="noopener">http://www.amazingcounters.com/</a> 免费网站计数器，有非常多的样式供你选择，可以设置计数器初始数值，可以设置按访问量计数，也可以按独立访问者计数</li>
+<li><a href="https://www.seniverse.com/widget/get" target="_blank" rel="noopener">https://www.seniverse.com/widget/get</a> 心知天气提供基于Web的免费天气插件，可以为你的网站添加一项简洁美观的天气预报功能，并自动适配PC和手机上的浏览</li>
+</ul>
+<h1 id="–-添加背景动态彩带效果"><a href="#–-添加背景动态彩带效果" class="headerlink" title="– 添加背景动态彩带效果"></a>– 添加背景动态彩带效果</h1><p>样式一是鼠标点击后彩带自动更换样式，样式二是飘动的彩带。</p>
+<p><img src="https://xuqian.xiaomujin.club/17.png" alt="动态彩带"></p>
+<p>实现方法：在 <font color="red">\themes\yilia\layout\layout.ejs</font> 文件的body前面添加如下代码：</p>
+<pre><code>&lt;!-- 样式一（鼠标点击更换样式） --&gt;
+&lt;script src=&quot;https://g.joyinshare.com/hc/ribbon.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;!-- 样式二（飘动的彩带） --&gt;
+&lt;script src=&quot;https://g.joyinshare.com/hc/piao.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</code></pre><h1 id="–-添加背景代码雨特效"><a href="#–-添加背景代码雨特效" class="headerlink" title="– 添加背景代码雨特效"></a>– 添加背景代码雨特效</h1><p>在 <font color="red">\themes\yilia\source\js</font>新建<font color="red">DigitalRain.js<font>，写入以下代码：</font></font></p>
+<pre><code>    window.onload = function(){
+    //获取画布对象
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    //获取画布的上下文
+    var context =canvas.getContext(&quot;2d&quot;);
+    var s = window.screen;
+    var W = canvas.width = s.width;
+    var H = canvas.height;
+    //获取浏览器屏幕的宽度和高度
+    //var W = window.innerWidth;
+    //var H = window.innerHeight;
+    //设置canvas的宽度和高度
+    canvas.width = W;
+    canvas.height = H;
+    //每个文字的字体大小
+    var fontSize = 12;
+    //计算列
+    var colunms = Math.floor(W /fontSize);    
+    //记录每列文字的y轴坐标
+    var drops = [];
+    //给每一个文字初始化一个起始点的位置
+    for(var i=0;i&lt;colunms;i++){
+        drops.push(0);
+    }
+    //运动的文字
+    var str =&quot;WELCOME TO WWW.ITRHX.COM&quot;;
+    //4:fillText(str,x,y);原理就是去更改y的坐标位置
+    //绘画的函数
+    function draw(){
+        context.fillStyle = &quot;rgba(238,238,238,.08)&quot;;//遮盖层
+        context.fillRect(0,0,W,H);
+        //给字体设置样式
+        context.font = &quot;600 &quot;+fontSize+&quot;px  Georgia&quot;;
+        //给字体添加颜色
+        context.fillStyle = [&quot;#33B5E5&quot;, &quot;#0099CC&quot;, &quot;#AA66CC&quot;, &quot;#9933CC&quot;, &quot;#99CC00&quot;, &quot;#669900&quot;, &quot;#FFBB33&quot;, &quot;#FF8800&quot;, &quot;#FF4444&quot;, &quot;#CC0000&quot;][parseInt(Math.random() * 10)];//randColor();可以rgb,hsl, 标准色，十六进制颜色
+        //写入画布中
+        for(var i=0;i&lt;colunms;i++){
+            var index = Math.floor(Math.random() * str.length);
+            var x = i*fontSize;
+            var y = drops[i] *fontSize;
+            context.fillText(str[index],x,y);
+            //如果要改变时间，肯定就是改变每次他的起点
+            if(y &gt;= canvas.height &amp;&amp; Math.random() &gt; 0.99){
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    };
+    function randColor(){//随机颜色
+        var r = Math.floor(Math.random() * 256);
+        var g = Math.floor(Math.random() * 256);
+        var b = Math.floor(Math.random() * 256);
+        return &quot;rgb(&quot;+r+&quot;,&quot;+g+&quot;,&quot;+b+&quot;)&quot;;
+    }
+    draw();
+    setInterval(draw,35);
+};
+</code></pre><p>在主题文件的相关css文件中（以 yilia 主题为例，在\themes\yilia\source-src\less_main.less 文件末尾）添加以下代码：</p>
+<pre><code>canvas {
+position: fixed;
+right: 0px;
+bottom: 0px;
+min-width: 100%;
+min-height: 100%;
+height: auto;
+width: auto;
+z-index: -1;
+}
+</code></pre><p>然后在主题的 layout.ejs 文件中引入即可：</p>
+<pre><code>&lt;!-- 数字雨 --&gt;
+&lt;canvas id=&quot;canvas&quot; width=&quot;1440&quot; height=&quot;900&quot; &gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/js/DigitalRain.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>最终效果：</p>
+<p><img src="https://xuqian.xiaomujin.club/18.png" alt="代码雨"></p>
+<h2 id="未完持续更新……"><a href="#未完持续更新……" class="headerlink" title="未完持续更新……"></a>未完持续更新……</h2>
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:16px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+    <div>
+    
+        
+    
+  </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>木槿前端不求人，有空就来坐坐。</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/money_wx.jpg" alt="莫子谦 微信">
+        <p>微信</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/money_z.jpg" alt="莫子谦 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>莫子谦</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://www.xiaomujin.club/2019/07/17/hexo博客美化/" title="Hexo博客美化">https://www.xiaomujin.club/2019/07/17/hexo博客美化/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+    
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo博客/" rel="tag"><i class="fa fa-tag"></i> Hexo博客</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/16/学习vue所踩过的坑/" rel="next" title="自己学习vue所踩过的坑">
+                <i class="fa fa-chevron-left"></i> 自己学习vue所踩过的坑
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/19/Git使用教程/" rel="prev" title="Git使用教程">
+                Git使用教程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+  
+    
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NTM2Mi8yMTg3NQ=="></div>
+  </div>
+  
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <a href="/">
+<div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="/images/author.png" alt="莫子谦">
+  
+  <p class="site-author-name" itemprop="name">莫子谦</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+</a>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=&site=2035805156&menu=yes" title="QQ &rarr; http://wpa.qq.com/msgrd?v=3&uin=&site=2035805156&menu=yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i>QQ</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/xuqssq" title="GitHub &rarr; https://github.com/xuqssq" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://space.bilibili.com/375505919" title="B站 &rarr; https://space.bilibili.com/375505919" rel="noopener" target="_blank"><i class="fa fa-fw fa-tv"></i>B站</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.zhihu.com/people/ji-li-77-13/activities" title="知乎 &rarr; https://www.zhihu.com/people/ji-li-77-13/activities" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>知乎</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/6289046268/profile?topnav=1&wvr=6&is_all=1" title="微博 &rarr; https://weibo.com/6289046268/profile?topnav=1&wvr=6&is_all=1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:xq-ambition@qq.com" title="E-Mail &rarr; mailto:xq-ambition@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://blog.csdn.net/weixin_43824680" title="CSDN &rarr; https://blog.csdn.net/weixin_43824680" rel="noopener" target="_blank"><i class="fa fa-fw fa-leanpub"></i>CSDN</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.jianshu.com/u/2838cbfa1fbf" title="简书 &rarr; https://www.jianshu.com/u/2838cbfa1fbf" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>简书</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.linkedin.com/in/%E8%B0%A6-%E8%83%A5-1baa84171/detail/recent-activity/" title="领英 &rarr; https://www.linkedin.com/in/%E8%B0%A6-%E8%83%A5-1baa84171/detail/recent-activity/" rel="noopener" target="_blank"><i class="fa fa-fw fa-linkedin"></i>领英</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.douban.com/people/199853206/" title="豆瓣 &rarr; https://www.douban.com/people/199853206/" rel="noopener" target="_blank"><i class="fa fa-fw fa-film"></i>豆瓣</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="http://www.renren.com/971655312/profile" title="人人网 &rarr; http://www.renren.com/971655312/profile" rel="noopener" target="_blank"><i class="fa fa-fw fa-renren"></i>人人网</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="skype:17620624964?call|chat" title="Skype &rarr; skype:17620624964?call|chat" rel="noopener" target="_blank"><i class="fa fa-fw fa-skype"></i>Skype</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+      <div class="links-of-blogroll-title">
+        <!-- modify icon to fire by szw -->
+        <i class="fa fa-history fa-" aria-hidden="true"></i>
+        近期文章
+      </div>
+      <ul class="links-of-blogroll-list">
+        
+        
+          <li>
+            <a href="/2019/10/03/学习node.js的第七天/" title="七天搞定node.js---第七天" target="_blank">七天搞定node.js---第七天</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/01/学习node.js的第六天/" title="七天搞定node.js---第六天" target="_blank">七天搞定node.js---第六天</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/25/学习node.js的第五天/" title="七天搞定node.js---第五天" target="_blank">七天搞定node.js---第五天</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/15/学习node.js的第四天/" title="七天搞定node.js---第四天" target="_blank">七天搞定node.js---第四天</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/05/特殊字符转码编译/" title="Hexo Markdown 特殊字符转义" target="_blank">Hexo Markdown 特殊字符转义</a>
+          </li>
+        
+      </ul>
+    </div>
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#各种功能不定时更新中"><span class="nav-number">1.</span> <span class="nav-text">各种功能不定时更新中</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文章目录："><span class="nav-number">1.1.</span> <span class="nav-text">文章目录：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#–-添加卡通人物（看板娘）"><span class="nav-number">2.</span> <span class="nav-text">– 添加卡通人物（看板娘）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#–-添加鼠标点击爱心效果"><span class="nav-number">3.</span> <span class="nav-text">– 添加鼠标点击爱心效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#–-添加鼠标点击显示字体效果"><span class="nav-number">4.</span> <span class="nav-text">– 添加鼠标点击显示字体效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#–-添加鼠标点击烟花爆炸效果"><span class="nav-number">5.</span> <span class="nav-text">– 添加鼠标点击烟花爆炸效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#–-添加彩色滚动变换字体"><span class="nav-number">6.</span> <span class="nav-text">– 添加彩色滚动变换字体</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#–-添加背景音乐"><span class="nav-number">7.</span> <span class="nav-text">– 添加背景音乐</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#–-背景添加动态线条效果"><span class="nav-number">8.</span> <span class="nav-text">– 背景添加动态线条效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#–-添加人体时钟等有趣的挂件"><span class="nav-number">9.</span> <span class="nav-text">– 添加人体时钟等有趣的挂件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#–-添加背景动态彩带效果"><span class="nav-number">10.</span> <span class="nav-text">– 添加背景动态彩带效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#–-添加背景代码雨特效"><span class="nav-number">11.</span> <span class="nav-text">– 添加背景代码雨特效</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#未完持续更新……"><span class="nav-number">11.1.</span> <span class="nav-text">未完持续更新……</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">粤ICP备19050326号 </a>&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">莫子谦</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+ <div>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <i class="fa fa-eye"></i> 本站总访问量:
+                <span id="busuanzi_value_site_pv"></span>次 |
+                <i class="fa fa-child"></i> 本站访客数:
+                <span id="busuanzi_value_site_uv"></span>人次<br>
+              <span class="with-love" id="heart" style="color:red;"><i class="fa fa-heartbeat"></i></span><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><br>
+                 
+                <script>
+                    var now = new Date();
+
+                    function createtime() {
+                        var grt = new Date("03/01/2019 00:00:00"); //在此处修改你的建站时间
+                        now.setTime(now.getTime() + 250);
+                        days = (now - grt) / 1000 / 60 / 60 / 24;
+                        dnum = Math.floor(days);
+                        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                        hnum = Math.floor(hours);
+                        if (String(hnum).length == 1) {
+                            hnum = "0" + hnum;
+                        }
+                        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                        mnum = Math.floor(minutes);
+                        if (String(mnum).length == 1) {
+                            mnum = "0" + mnum;
+                        }
+                        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                        snum = Math.round(seconds);
+                        if (String(snum).length == 1) {
+                            snum = "0" + snum;
+                        }
+                        document.getElementById("timeDate").innerHTML = "Run for " + dnum + " Days ";
+                        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+                    }
+                    setInterval("createtime()", 250);
+                </script>
+            </div>
+            <div class="theme-info">
+  <div class="powered-by"></div>
+  
+    <span class="post-meta-divider"></span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-file-word-o"></i> 本站 ≈
+    </span>
+    
+    <span title="站点总字数">180k</span>
+  字
+</div>
+<br><a id="translateLink" href="javascript:translatePage();">繁體</a>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+<!-- 页面点击出现4级单词-->
+<!--<script type="text/javascript" src="/js/src/cet4.js"></script>-->
+<!-- 样式二（飘动的彩带） -->
+<!-- <script src="https://g.joyinshare.com/hc/piao.js" type="text/javascript"></script>-->
+<script type="text/javascript" src="js/src/tw_cn.js"></script>
+<script type="text/javascript">
+var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+var translateDelay = 100; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+var cookieDomain = "https://www.xiaomujin.club"; //Cookie地址, 一定要设定, 通常为你的网址
+var msgToTraditionalChinese = "繁體"; //此处可以更改为你想要显示的文字
+var msgToSimplifiedChinese = "简体"; //同上，但两处均不建议更改
+var translateButtonId = "translateLink"; //默认互换id
+translateInitilization();
+</script>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d3bbc46123e2e92" async="async"></script>
+  </div>
+
+
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+    
+
+
+
+<script>
+  window.livereOptions = {
+    refer: '2019/07/17/hexo博客美化/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+
+  
+
+  <script src="/live2d-widget/autoload.js"></script>
+</body>
+
+</html>
+

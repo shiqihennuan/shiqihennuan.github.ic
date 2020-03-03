@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("http://www.xiaomujin.club"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+ <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/b6dbddb6.js","daovoice")
+ daovoice('init', {
+  app_id: "ee5c03d0"
+});
+daovoice('update');
+ </script>
+
+
+
+
+  <meta name="description" content="最近在学习node.js，记录一下自己的学习过程和一些笔记。">
+<meta name="keywords" content="javascript,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="七天搞定node.js---第一天">
+<meta property="og:url" content="https://www.xiaomujin.club/2019/08/01/学习node.js的第一天/index.html">
+<meta property="og:site_name" content="记录生活，记录故事">
+<meta property="og:description" content="最近在学习node.js，记录一下自己的学习过程和一些笔记。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/blog/20190801/jYnah8vXBFez.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/blog/20190801/99rFcHABREt6.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/blog/20190801/cK1nAVKdJe8o.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/blog/20190802/6QFY8k4OvtwG.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/blog/20190802/n1nnXIOBszzM.png">
+<meta property="og:updated_time" content="2019-08-04T08:34:19.871Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="七天搞定node.js---第一天">
+<meta name="twitter:description" content="最近在学习node.js，记录一下自己的学习过程和一些笔记。">
+<meta name="twitter:image" content="https://xuqian.xiaomujin.club/blog/20190801/jYnah8vXBFez.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="记录生活，记录故事" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://www.xiaomujin.club/2019/08/01/学习node.js的第一天/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>七天搞定node.js---第一天 | 记录生活，记录故事</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c06e8ff14515b26aea85461e16a55626";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/shiqihennuan" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">记录生活，记录故事</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">身体和灵魂，总要有一个在路上。</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-主页">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>主页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-归档">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">16</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-留言">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/guestbook" rel="section"><i class="menu-item-icon fa fa-fw fa-envelope"></i> <br>留言</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-邻居">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/friends" rel="section"><i class="menu-item-icon fa fa-fw fa-users"></i> <br>邻居</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.xiaomujin.club/2019/08/01/学习node.js的第一天/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+      <meta itemprop="name" content="莫子谦">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/author.png">
+ 
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录生活，记录故事">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">七天搞定node.js---第一天
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-01 20:00:00" itemprop="dateCreated datePublished" datetime="2019-08-01T20:00:00+08:00">2019-08-01</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-04 16:34:19" itemprop="dateModified" datetime="2019-08-04T16:34:19+08:00">2019-08-04</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/进阶/" itemprop="url" rel="index"><span itemprop="name">进阶</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/进阶/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/进阶/技术/全栈/" itemprop="url" rel="index"><span itemprop="name">全栈</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i> 本文 ≈
+              </span>
+              
+              <span title="本文字数">8.7k</span>
+            </span>字
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i> 阅读时长 ≈
+              </span>
+              
+              <span title="阅读时长">8 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近在学习node.js，记录一下自己的学习过程和一些笔记。<br><a id="more"></a></p>
+<h1 id="node-js介绍"><a href="#node-js介绍" class="headerlink" title="node.js介绍"></a>node.js介绍</h1><h2 id="为什么要学习node-js"><a href="#为什么要学习node-js" class="headerlink" title="为什么要学习node.js"></a>为什么要学习node.js</h2><ul>
+<li>企业需求<ul>
+<li>具有服务端开发经验更好</li>
+<li>font-end</li>
+<li>back-end</li>
+<li>全栈开发工程师<ul>
+<li>全干</li>
+</ul>
+</li>
+<li>基本的网络开发能力<ul>
+<li>服务端</li>
+<li>前端</li>
+<li>运维部署</li>
+</ul>
+</li>
+<li>多人社区</li>
+</ul>
+</li>
+<li>node.js是什么<ul>
+<li>JavaScript 运行时</li>
+<li>既不是语言，也不是框架，它是一个平台</li>
+</ul>
+</li>
+<li>node.js 中的 JavaScript<ul>
+<li>没有BOM、DOM</li>
+<li>EcmaScript基本的JavaScript</li>
+<li>在 node 中为 JavaScript 提供了一些服务器级别的 API<ul>
+<li>文件操作的能力</li>
+<li>http 服务的能力</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>模块系统<ul>
+<li>在 node 中没有全局作用域的概念</li>
+<li>在 node 中只能通过 require 方法来加载执行多个 JavaScript 脚本文件</li>
+<li>require 加载只能是执行其中的代码,文件与文件之间由于是模块作用域，所以不会有污染的问题。<ul>
+<li>模块完全是封闭的</li>
+<li>外部无法访问内部</li>
+<li>内部也无法访问外部</li>
+</ul>
+</li>
+<li>模块作用域固然带来了一些好处，可以加载执行多个文件，可以完全避免变量名冲突的问题。</li>
+<li>但是某些情况下，模块与模块是需要进行通信的</li>
+<li>在每一个模块中，都提供了一个对象：<code>exports</code></li>
+<li>该对象默认是一个空对象</li>
+<li>你要做的就是把需要被外部访问使用的成员手动的挂载到<code>exports</code>接口对象中</li>
+<li>然后谁来<code>require</code>这个模块，谁就可以得到模块内部的<code>exports</code>接口对象</li>
+</ul>
+</li>
+<li>核心模块<ul>
+<li>核心模块是由 node 提供的一个个的具名的模块，它们都有自己特殊的名称表示，例如<ul>
+<li>fs 文件操作模块</li>
+<li>http 网络服务构建模块</li>
+<li>os 操作系统信息模块</li>
+<li>path 路径处理模块</li>
+<li>……</li>
+</ul>
+</li>
+<li>所有核心模块在使用的时候都必须手动的先使用<code>require</code>方法来加载，然后才可以使用，例如：<ul>
+<li><code>var fs = require(&#39;fs&#39;)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>http <ul>
+<li>require</li>
+<li>端口号<ul>
+<li>ip 地址定位计算机</li>
+<li>端口号定位具体的应用程序</li>
+</ul>
+</li>
+<li>Content-Type</li>
+<li>通过网络发送文件<ul>
+<li>发送的并不是文件，本质上来讲发送的是文件内容</li>
+<li>当浏览器收到服务器响应内容之后，就会根据你的 Content-Type 进行对应的解析处理 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h1><h2 id="还是-node-环境的安装"><a href="#还是-node-环境的安装" class="headerlink" title="还是 node 环境的安装"></a>还是 node 环境的安装</h2><ul>
+<li>查看当前 node 环境的版本号</li>
+<li>下载 <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></li>
+<li>安装<ul>
+<li>傻瓜式的一路<code>next</code>就好了</li>
+<li>对于已经安装过的，重新安装就会升级</li>
+</ul>
+</li>
+<li>确认 node 环境是否安装成功<ul>
+<li>打开命令行，输入<code>node --version</code></li>
+<li>或者<code>node -v</code>查看版本号</li>
+</ul>
+</li>
+<li>环境变量</li>
+</ul>
+<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><h3 id="解析执行-JavaScript"><a href="#解析执行-JavaScript" class="headerlink" title="解析执行 JavaScript"></a>解析执行 JavaScript</h3><p>1.创建编写 JavaScript 脚本文件<br>2.打开终端，定位到脚本文件所属目录<br>3.输入<code>node 文件名</code>执行对应文件<br>注意：文件不要使用node.js来命名，也就是说除了 node 这个名字其他随便取(不要太过分~)，而且最好也不要使用中文。</p>
+<h3 id="文件的读写"><a href="#文件的读写" class="headerlink" title="文件的读写"></a>文件的读写</h3><p>文件读取：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">var file_system = require(&apos;fs&apos;)</span><br><span class="line">    // 读取文件有2参数</span><br><span class="line">    // 第一个参数是文件地址</span><br><span class="line">    // 第二个参数是一个回调函数：</span><br><span class="line">    // 成功：</span><br><span class="line">    //     data是数据</span><br><span class="line">    //     error是null</span><br><span class="line">    // 失败：</span><br><span class="line">    //     data是undefind</span><br><span class="line">    //     error是错误对象</span><br><span class="line"></span><br><span class="line">file_system.readFile(&apos;./doc.txt&apos;, function(error, data) &#123;</span><br><span class="line">    //&lt;Buffer e5 ad a6 e4 b9 a0 6e 6f 64 65 2e 6a 73 e7 9a 84 e7 ac ac e4 b8 80 e5 a4 a9 e3 80 82&gt;   储存的是二进制数据</span><br><span class="line">    // 二进制转换为16进制了，所以看到的不是  0  1</span><br><span class="line">    // 用tostring方法转换为我们可以阅读的字体</span><br><span class="line">    // console.log(error)</span><br><span class="line">    // console.log(data)</span><br><span class="line">    // console.log(data.toString())</span><br><span class="line">    //这里就可以通过判断 error 来确认是否有错误发生</span><br><span class="line">    if(error)&#123;</span><br><span class="line">    	console.log(&apos;文件读取失败~&apos;)</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">    	console.log(data.toString())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>文件写入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">var fs = request(&apos;fs&apos;)</span><br><span class="line">//$.ajax(&#123;</span><br><span class="line">// ...</span><br><span class="line">// success:function (data)&#123;</span><br><span class="line"></span><br><span class="line">//	&#125;</span><br><span class="line">//&#125;)</span><br><span class="line"></span><br><span class="line">//第一个参数：文件路径</span><br><span class="line">//第二个参数：文件内容</span><br><span class="line">//第三个参数：回调函数</span><br><span class="line">//	error</span><br><span class="line">//</span><br><span class="line">//	成功：</span><br><span class="line">//		文件写入成功</span><br><span class="line">//		error 是 null</span><br><span class="line">//	失败：</span><br><span class="line">//		文件写入失败</span><br><span class="line">//		error 就是错误对象</span><br><span class="line">fs.writeFile(&apos;./data/你好.md/(text)&apos;,&apos;大家好，给大家介绍一下，我是Node.js&apos;,function(error)&#123;</span><br><span class="line">// console.log(&apos;文件写入成功&apos;)</span><br><span class="line">// console.log(error)</span><br><span class="line"> if(error)&#123;</span><br><span class="line"> 	console.log(&apos;写入失败&apos;)</span><br><span class="line"> &#125;else&#123;</span><br><span class="line"> 	console.log(&apos;写入成功&apos;)</span><br><span class="line"> &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="http"><a href="#http" class="headerlink" title="http"></a>http</h3><p>一个很傻的服务器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">// 你可以使用 node 非常轻松的构建一个 web 服务器</span><br><span class="line">// 在 node 中专门提供了一个核心模块：http</span><br><span class="line">// http 这个模块的职责就是帮助你创建缩写服务器的</span><br><span class="line"></span><br><span class="line">//1、加载 http 核心模块</span><br><span class="line">var http = require(&apos;http&apos;)</span><br><span class="line"></span><br><span class="line">//2、使用 http.createServer() 方法创建一个 web 服务器</span><br><span class="line">// 返回一个 Server 实例</span><br><span class="line">var server = http.createServer()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//3、服务器要干什么？</span><br><span class="line">//		提供服务：对数据的服务</span><br><span class="line">//		发请求</span><br><span class="line">//		接收请求</span><br><span class="line">//		处理请求</span><br><span class="line">//		给个反馈（发送响应）</span><br><span class="line">//		注册 request 请求事件</span><br><span class="line">//		当客户端发送请求过来，就会自动触发服务器的 request 请求事件，然后执行第二个参数：回调处理函数</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">server.on(&apos;request&apos;,function()&#123;</span><br><span class="line">	console.log(&apos;收到客户端的请求了&apos;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//4、绑定端口号，启动服务器</span><br><span class="line">server.listen(3000,function()&#123;</span><br><span class="line">	console.log(&apos;服务器启动成功了,可以通过 http://127.0.0.1:3000/ 来进行访问 &apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://xuqian.xiaomujin.club/blog/20190801/jYnah8vXBFez.png" alt="http"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">var http = require(&apos;http&apos;)</span><br><span class="line"></span><br><span class="line">//1、创建Server</span><br><span class="line">var server = http.createServer()</span><br><span class="line">    //2、createServer (http-res-url.js)请求处理函数</span><br><span class="line">server.on(&apos;request&apos;, function(req, res) &#123;</span><br><span class="line">        // console.log(&apos;收到请求了，请求路径是：&apos; + req.url)</span><br><span class="line">        // res.write(&apos;hello&apos;)</span><br><span class="line">        // res.write(&apos;world&apos;)</span><br><span class="line">        // res.end()</span><br><span class="line"></span><br><span class="line">        //上面的方式比较麻烦，推荐使用更简洁的方式，直接end的同时发送响应数据。</span><br><span class="line">        // res.end(&apos;hello nodejs&apos;)</span><br><span class="line"></span><br><span class="line">        //根据不同的请求路径发送不同的响应结果</span><br><span class="line">        // 1、获取请求路径</span><br><span class="line">        //     req.url 获取的是端口号之后的那一部分路径</span><br><span class="line">        //     也就是说所有的 url 都是以 / 开头的</span><br><span class="line">        // 2、判断路径处理响应</span><br><span class="line"></span><br><span class="line">        var url = req.url</span><br><span class="line">            // if (url === &apos;/&apos;) &#123;</span><br><span class="line">            //     res.end(&apos;index page&apos;)</span><br><span class="line">            // &#125; else if (url === &apos;/login&apos;) &#123;</span><br><span class="line">            //     res.end(&apos;login page&apos;)</span><br><span class="line">            // &#125; else &#123;</span><br><span class="line">            //     res.end(&apos;404 Not Found&apos;)</span><br><span class="line">            // &#125;</span><br><span class="line"></span><br><span class="line">        //学会了这些就能写简单版的接口了，例如：</span><br><span class="line">        if (url === &apos;/products&apos;) &#123;</span><br><span class="line">            var products = [&#123;</span><br><span class="line">                    name: &apos;iphone X&apos;,</span><br><span class="line">                    price: 8888</span><br><span class="line">                &#125;, &#123;</span><br><span class="line">                    name: &apos;华为&apos;,</span><br><span class="line">                    price: 6000</span><br><span class="line">                &#125;, &#123;</span><br><span class="line">                    name: &apos;小米&apos;,</span><br><span class="line">                    price: 3000</span><br><span class="line">                &#125;, &#123;</span><br><span class="line">                    name: &apos;魅族&apos;,</span><br><span class="line">                    price: 2500</span><br><span class="line">                &#125;, &#123;</span><br><span class="line">                    name: &apos;1+&apos;,</span><br><span class="line">                    price: 3500</span><br><span class="line">                &#125;, ]</span><br><span class="line">                //响应内容只能是二进制数据或者字符串</span><br><span class="line">                //数字、对象、数组、布尔值通通无效</span><br><span class="line"></span><br><span class="line">            //数组转字符串 JSON.stringify()</span><br><span class="line">            res.end(JSON.stringify(products))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    //3、绑定端口号，启动服务</span><br><span class="line">server.listen(3000, function() &#123;</span><br><span class="line">    console.log(&apos;服务器启动成功，可以正常访问了~~&apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://xuqian.xiaomujin.club/blog/20190801/99rFcHABREt6.png" alt="http"><br><img src="https://xuqian.xiaomujin.club/blog/20190801/cK1nAVKdJe8o.png" alt="简单写个API接口"></p>
+<p>解决编码问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var http = require(&apos;http&apos;)</span><br><span class="line"></span><br><span class="line">var server = http.createServer()</span><br><span class="line">server.on(&apos;request&apos;, function(req, res) &#123;</span><br><span class="line">    //在服务端默认发送的数据，其实是 utf8 编码的内容</span><br><span class="line">    //但是浏览器不知道你是 utf8 编码内容</span><br><span class="line">    //浏览器在不知道服务器响应内容的编码的情况下会按照当前操作系统的默认编码去解析</span><br><span class="line">    //中文操作系统默认编码是 gdk</span><br><span class="line">    //解决方法就是正确的告诉浏览器我给你发送的内容是什么编码的</span><br><span class="line">    res.setHeader(&apos;Content-Type&apos;, &apos;text/plain; charset=utf-8&apos;)</span><br><span class="line">    res.end(&apos;你好，世界&apos;)</span><br><span class="line">&#125;)</span><br><span class="line">server.listen(3000, function() &#123;</span><br><span class="line">    console.log(&apos;Server is running...&apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://xuqian.xiaomujin.club/blog/20190802/6QFY8k4OvtwG.png" alt="解决编码问题"></p>
+<h4 id="Content-Type类型"><a href="#Content-Type类型" class="headerlink" title="Content-Type类型"></a>Content-Type类型</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">var http = require(&apos;http&apos;)</span><br><span class="line"></span><br><span class="line">var server = http.createServer()</span><br><span class="line">server.on(&apos;request&apos;, function(req, res) &#123;</span><br><span class="line">    //在服务端默认发送的数据，其实是 utf8 编码的内容</span><br><span class="line">    //但是浏览器不知道你是 utf8 编码内容</span><br><span class="line">    //浏览器在不知道服务器响应内容的编码的情况下会按照当前操作系统的默认编码去解析</span><br><span class="line">    //中文操作系统默认编码是 gdk</span><br><span class="line">    //解决方法就是正确的告诉浏览器我给你发送的内容是什么编码的</span><br><span class="line">    //在 http 协议中，&apos;Content-type&apos;,就是用来告诉对方我给你发送的数据内容是什么类型</span><br><span class="line"></span><br><span class="line">    // res.setHeader(&apos;Content-Type&apos;, &apos;text/plain; charset=utf-8&apos;)</span><br><span class="line">    // res.end(&apos;你好，世界&apos;)</span><br><span class="line"></span><br><span class="line">    var url = req.url</span><br><span class="line">    if (url === &apos;/plain&apos;) &#123;</span><br><span class="line">        //text/plain就是普通文本</span><br><span class="line">        res.setHeader(&apos;Content-Type&apos;, &apos;text/plain; charset=utf-8&apos;)</span><br><span class="line">        res.end(&apos;你好，世界&apos;)</span><br><span class="line">    &#125; else if (url === &apos;/html&apos;) &#123;</span><br><span class="line">        //如果你发送的是html格式的字符串，也要告诉浏览器发送的是html格式的</span><br><span class="line">        res.setHeader(&apos;Content-Type&apos;, &apos;text/html; charset=utf-8&apos;)</span><br><span class="line">        res.end(&apos;&lt;h1&gt;你好,html&lt;h1&gt;&apos;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line">server.listen(3000, function() &#123;</span><br><span class="line">    console.log(&apos;Server is running...&apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="node中的JavaScript"><a href="#node中的JavaScript" class="headerlink" title="node中的JavaScript"></a>node中的JavaScript</h1><h2 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h2><p>Node 为 JavaScript 提供了很多服务器级别的API，这些API绝大多数都被包装到了一个具体的核心模块中了。<br>例如文件操作<code>fs</code>核心模块，http服务构建的<code>http</code>模块，<code>path</code>路径操作模块、<code>os</code>操作系统信息模块……<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    //获取机器信息</span><br><span class="line">var os = require(&apos;os&apos;)</span><br><span class="line">    //操作路径</span><br><span class="line">var path = require(&apos;path&apos;)</span><br><span class="line">    //获取当前机器的 cpu 信息</span><br><span class="line">console.log(os.cpus())</span><br><span class="line">    //memory 内存</span><br><span class="line">console.log(os.totalmem())</span><br><span class="line">    //extname extension name</span><br><span class="line">console.log(path.extname(&apos;c:/a/b/c/d/hello.txt&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>更多模块用法参考<a href="https://nodejs.org/dist/latest-v12.x/docs/api/fs.html" target="_blank" rel="noopener">官网</a></p>
+<h1 id="Web服务器开发"><a href="#Web服务器开发" class="headerlink" title="Web服务器开发"></a>Web服务器开发</h1><h2 id="ip地址和端口号"><a href="#ip地址和端口号" class="headerlink" title="ip地址和端口号"></a>ip地址和端口号</h2><ul>
+<li>ip地址用来定位计算机</li>
+<li>端口号用来定位具体的应用程序</li>
+<li>一切需要联网通信的软件都会占用一个端口号</li>
+<li>端口号范围从0~65536之间</li>
+<li>在计算机中有一些默认端口号，最好不要去使用<ul>
+<li>例如 http 服务的80</li>
+</ul>
+</li>
+<li>我们在开发过程中使用一些简单好记的端口号就行了，例如3000、5000等</li>
+<li>可以同时开启多个服务，但一定要确保不同服务占用的端口号要不一样</li>
+</ul>
+<h2 id="Content-Type"><a href="#Content-Type" class="headerlink" title="Content-Type"></a>Content-Type</h2><p>可以在这里查询对应的Content-Type：<a href="http://tool.oschina.net/" target="_blank" rel="noopener">http://tool.oschina.net/</a><br><img src="https://xuqian.xiaomujin.club/blog/20190802/n1nnXIOBszzM.png" alt="Content-Type"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">//1、结合 fs 发送文件中的数据</span><br><span class="line">//2、Content-Type</span><br><span class="line">// http://tool.oschina.net/commons</span><br><span class="line">// 不同的资源对应的 Content-Type 是不一样的</span><br><span class="line">// 图片不需要指定编码</span><br><span class="line">// 一般只为字符数据才指定编码</span><br><span class="line">var http = require(&apos;http&apos;)</span><br><span class="line">var fs = require(&apos;fs&apos;)</span><br><span class="line"></span><br><span class="line">var server = http.createServer()</span><br><span class="line">server.on(&apos;request&apos;, function(req, res) &#123;</span><br><span class="line">    var url = req.url</span><br><span class="line">    if (url === &apos;/&apos;) &#123;</span><br><span class="line">        fs.readFile(&apos;../resource/index.html&apos;, function(err, data) &#123;</span><br><span class="line">            if (err) &#123;</span><br><span class="line">                res.setHeader(&apos;Content-Type&apos;, &apos;text/plain; charset=utf8&apos;)</span><br><span class="line">                res.end(&apos;文件读取失败，请稍后重试~&apos;)</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                //data默认是二进制数据，可以通过 .toString转为我们认识的字符串</span><br><span class="line">                //res.end()刚好支持两种数据类型，一种是二进制，一种是字符串</span><br><span class="line">                res.setHeader(&apos;Content-Type&apos;, &apos;text/html; charset=utf8&apos;)</span><br><span class="line">                res.end(data)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    &#125; else if (url === &apos;/picture&apos;) &#123;</span><br><span class="line">        //url：统一资源定位符</span><br><span class="line">        //一个 url 最终其实是要对应到一个资源的</span><br><span class="line">        fs.readFile(&apos;../resource/preview.jpg&apos;, function(err, data) &#123;</span><br><span class="line">            if (err) &#123;</span><br><span class="line">                res.setHeader(&apos;Content-Type&apos;, &apos;text/plain; charset=utf8&apos;)</span><br><span class="line">                res.end(&apos;文件读取失败，请稍后重试~&apos;)</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                //图片就不需要指定编码了，因为我们常说的编码一般是：指字符编码</span><br><span class="line">                res.setHeader(&apos;Content-Type&apos;, &apos;image/jpeg&apos;)</span><br><span class="line">                res.end(data)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">server.listen(3000, function() &#123;</span><br><span class="line">    console.log(&apos;Server is running...&apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="请求对象-Request"><a href="#请求对象-Request" class="headerlink" title="请求对象 Request"></a>请求对象 Request</h2><h2 id="响应对象-Request"><a href="#响应对象-Request" class="headerlink" title="响应对象 Request"></a>响应对象 Request</h2><h2 id="在-node-中使用模板引擎"><a href="#在-node-中使用模板引擎" class="headerlink" title="在 node 中使用模板引擎"></a>在 node 中使用模板引擎</h2><h2 id="统一处理静态资源"><a href="#统一处理静态资源" class="headerlink" title="统一处理静态资源"></a>统一处理静态资源</h2><h2 id="服务端渲染"><a href="#服务端渲染" class="headerlink" title="服务端渲染"></a>服务端渲染</h2><p>源代码可以去我的 <a href="https://github.com/shiqihennuan/Node.js-learn" target="_blank" rel="noopener">github</a> 克隆</p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:16px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+    <div>
+    
+        
+    
+  </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>木槿前端不求人，有空就来坐坐。</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/money_wx.jpg" alt="莫子谦 微信">
+        <p>微信</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/money_z.jpg" alt="莫子谦 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>莫子谦</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://www.xiaomujin.club/2019/08/01/学习node.js的第一天/" title="七天搞定node.js---第一天">https://www.xiaomujin.club/2019/08/01/学习node.js的第一天/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+    
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"><i class="fa fa-tag"></i> javascript</a>
+          
+            <a href="/tags/node-js/" rel="tag"><i class="fa fa-tag"></i> node.js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/31/让前端代码更高效/" rel="next" title="7个JavaScript小技巧，让前端的代码更高效！">
+                <i class="fa fa-chevron-left"></i> 7个JavaScript小技巧，让前端的代码更高效！
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/02/12个令人惊叹的 CSS 项目/" rel="prev" title="12个令人惊叹的 CSS 项目">
+                12个令人惊叹的 CSS 项目 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+  
+    
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NTM2Mi8yMTg3NQ=="></div>
+  </div>
+  
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <a href="/">
+<div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="/images/author.png" alt="莫子谦">
+  
+  <p class="site-author-name" itemprop="name">莫子谦</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+</a>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=&site=2035805156&menu=yes" title="QQ &rarr; http://wpa.qq.com/msgrd?v=3&uin=&site=2035805156&menu=yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i>QQ</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/xuqssq" title="GitHub &rarr; https://github.com/xuqssq" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://space.bilibili.com/375505919" title="B站 &rarr; https://space.bilibili.com/375505919" rel="noopener" target="_blank"><i class="fa fa-fw fa-tv"></i>B站</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.zhihu.com/people/ji-li-77-13/activities" title="知乎 &rarr; https://www.zhihu.com/people/ji-li-77-13/activities" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>知乎</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/6289046268/profile?topnav=1&wvr=6&is_all=1" title="微博 &rarr; https://weibo.com/6289046268/profile?topnav=1&wvr=6&is_all=1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:xq-ambition@qq.com" title="E-Mail &rarr; mailto:xq-ambition@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://blog.csdn.net/weixin_43824680" title="CSDN &rarr; https://blog.csdn.net/weixin_43824680" rel="noopener" target="_blank"><i class="fa fa-fw fa-leanpub"></i>CSDN</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.jianshu.com/u/2838cbfa1fbf" title="简书 &rarr; https://www.jianshu.com/u/2838cbfa1fbf" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>简书</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.linkedin.com/in/%E8%B0%A6-%E8%83%A5-1baa84171/detail/recent-activity/" title="领英 &rarr; https://www.linkedin.com/in/%E8%B0%A6-%E8%83%A5-1baa84171/detail/recent-activity/" rel="noopener" target="_blank"><i class="fa fa-fw fa-linkedin"></i>领英</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.douban.com/people/199853206/" title="豆瓣 &rarr; https://www.douban.com/people/199853206/" rel="noopener" target="_blank"><i class="fa fa-fw fa-film"></i>豆瓣</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="http://www.renren.com/971655312/profile" title="人人网 &rarr; http://www.renren.com/971655312/profile" rel="noopener" target="_blank"><i class="fa fa-fw fa-renren"></i>人人网</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="skype:17620624964?call|chat" title="Skype &rarr; skype:17620624964?call|chat" rel="noopener" target="_blank"><i class="fa fa-fw fa-skype"></i>Skype</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+      <div class="links-of-blogroll-title">
+        <!-- modify icon to fire by szw -->
+        <i class="fa fa-history fa-" aria-hidden="true"></i>
+        近期文章
+      </div>
+      <ul class="links-of-blogroll-list">
+        
+        
+          <li>
+            <a href="/2019/10/03/学习node.js的第七天/" title="七天搞定node.js---第七天" target="_blank">七天搞定node.js---第七天</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/01/学习node.js的第六天/" title="七天搞定node.js---第六天" target="_blank">七天搞定node.js---第六天</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/25/学习node.js的第五天/" title="七天搞定node.js---第五天" target="_blank">七天搞定node.js---第五天</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/15/学习node.js的第四天/" title="七天搞定node.js---第四天" target="_blank">七天搞定node.js---第四天</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/05/特殊字符转码编译/" title="Hexo Markdown 特殊字符转义" target="_blank">Hexo Markdown 特殊字符转义</a>
+          </li>
+        
+      </ul>
+    </div>
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#node-js介绍"><span class="nav-number">1.</span> <span class="nav-text">node.js介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要学习node-js"><span class="nav-number">1.1.</span> <span class="nav-text">为什么要学习node.js</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#起步"><span class="nav-number">2.</span> <span class="nav-text">起步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#还是-node-环境的安装"><span class="nav-number">2.1.</span> <span class="nav-text">还是 node 环境的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello-World"><span class="nav-number">2.2.</span> <span class="nav-text">Hello World</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解析执行-JavaScript"><span class="nav-number">2.2.1.</span> <span class="nav-text">解析执行 JavaScript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件的读写"><span class="nav-number">2.2.2.</span> <span class="nav-text">文件的读写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http"><span class="nav-number">2.2.3.</span> <span class="nav-text">http</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Content-Type类型"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">Content-Type类型</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#node中的JavaScript"><span class="nav-number">3.</span> <span class="nav-text">node中的JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#核心模块"><span class="nav-number">3.1.</span> <span class="nav-text">核心模块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web服务器开发"><span class="nav-number">4.</span> <span class="nav-text">Web服务器开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ip地址和端口号"><span class="nav-number">4.1.</span> <span class="nav-text">ip地址和端口号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Content-Type"><span class="nav-number">4.2.</span> <span class="nav-text">Content-Type</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请求对象-Request"><span class="nav-number">4.3.</span> <span class="nav-text">请求对象 Request</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#响应对象-Request"><span class="nav-number">4.4.</span> <span class="nav-text">响应对象 Request</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-node-中使用模板引擎"><span class="nav-number">4.5.</span> <span class="nav-text">在 node 中使用模板引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统一处理静态资源"><span class="nav-number">4.6.</span> <span class="nav-text">统一处理静态资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端渲染"><span class="nav-number">4.7.</span> <span class="nav-text">服务端渲染</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">粤ICP备19050326号 </a>&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">莫子谦</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+ <div>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <i class="fa fa-eye"></i> 本站总访问量:
+                <span id="busuanzi_value_site_pv"></span>次 |
+                <i class="fa fa-child"></i> 本站访客数:
+                <span id="busuanzi_value_site_uv"></span>人次<br>
+              <span class="with-love" id="heart" style="color:red;"><i class="fa fa-heartbeat"></i></span><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><br>
+                 
+                <script>
+                    var now = new Date();
+
+                    function createtime() {
+                        var grt = new Date("03/01/2019 00:00:00"); //在此处修改你的建站时间
+                        now.setTime(now.getTime() + 250);
+                        days = (now - grt) / 1000 / 60 / 60 / 24;
+                        dnum = Math.floor(days);
+                        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                        hnum = Math.floor(hours);
+                        if (String(hnum).length == 1) {
+                            hnum = "0" + hnum;
+                        }
+                        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                        mnum = Math.floor(minutes);
+                        if (String(mnum).length == 1) {
+                            mnum = "0" + mnum;
+                        }
+                        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                        snum = Math.round(seconds);
+                        if (String(snum).length == 1) {
+                            snum = "0" + snum;
+                        }
+                        document.getElementById("timeDate").innerHTML = "Run for " + dnum + " Days ";
+                        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+                    }
+                    setInterval("createtime()", 250);
+                </script>
+            </div>
+            <div class="theme-info">
+  <div class="powered-by"></div>
+  
+    <span class="post-meta-divider"></span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-file-word-o"></i> 本站 ≈
+    </span>
+    
+    <span title="站点总字数">180k</span>
+  字
+</div>
+<br><a id="translateLink" href="javascript:translatePage();">繁體</a>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+<!-- 页面点击出现4级单词-->
+<!--<script type="text/javascript" src="/js/src/cet4.js"></script>-->
+<!-- 样式二（飘动的彩带） -->
+<!-- <script src="https://g.joyinshare.com/hc/piao.js" type="text/javascript"></script>-->
+<script type="text/javascript" src="js/src/tw_cn.js"></script>
+<script type="text/javascript">
+var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+var translateDelay = 100; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+var cookieDomain = "https://www.xiaomujin.club"; //Cookie地址, 一定要设定, 通常为你的网址
+var msgToTraditionalChinese = "繁體"; //此处可以更改为你想要显示的文字
+var msgToSimplifiedChinese = "简体"; //同上，但两处均不建议更改
+var translateButtonId = "translateLink"; //默认互换id
+translateInitilization();
+</script>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d3bbc46123e2e92" async="async"></script>
+  </div>
+
+
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+    
+
+
+
+<script>
+  window.livereOptions = {
+    refer: '2019/08/01/学习node.js的第一天/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+
+  
+
+  <script src="/live2d-widget/autoload.js"></script>
+</body>
+
+</html>
+

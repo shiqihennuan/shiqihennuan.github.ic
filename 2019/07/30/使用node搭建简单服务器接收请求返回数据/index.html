@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("http://www.xiaomujin.club"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+ <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/b6dbddb6.js","daovoice")
+ daovoice('init', {
+  app_id: "ee5c03d0"
+});
+daovoice('update');
+ </script>
+
+
+
+
+  <meta name="description" content="引言：&amp;emsp;&amp;emsp;不知道你在项目开发过程中，有没有遇到过有过以下场景： 一般是前端先制作静态页面，同时服务器端创建数据库，搭服务器端架构，写接口； 当接口写完之后，前端或者后端才能嵌套页面。 但是，如果前端页面制作好了，后端接口还没有写好呢？或者如何让前端、后端各自做各自的事情，互相不影响？ 能做到下面这样是不是很好呢？ ——在进行完需求分析和详细设计后，前端、后端一同商量、制作出一份">
+<meta name="keywords" content="node.js,前端,本地模拟后端数据接口">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用node.js搭建简单服务器接收请求返回数据,在本地实现模拟后端数据接口。">
+<meta property="og:url" content="https://www.xiaomujin.club/2019/07/30/使用node搭建简单服务器接收请求返回数据/index.html">
+<meta property="og:site_name" content="记录生活，记录故事">
+<meta property="og:description" content="引言：&amp;emsp;&amp;emsp;不知道你在项目开发过程中，有没有遇到过有过以下场景： 一般是前端先制作静态页面，同时服务器端创建数据库，搭服务器端架构，写接口； 当接口写完之后，前端或者后端才能嵌套页面。 但是，如果前端页面制作好了，后端接口还没有写好呢？或者如何让前端、后端各自做各自的事情，互相不影响？ 能做到下面这样是不是很好呢？ ——在进行完需求分析和详细设计后，前端、后端一同商量、制作出一份">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/blog/20190730/wWpVbR01OgY5.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/blog/20190730/eVEwVbdEbuYg.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/blog/20190730/axc3KJVEdLmn.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/blog/20190730/zLEqOYF0wVLa.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/blog/20190730/2n9xQj68a1mH.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/blog/20190730/kfCiDYL1NWTG.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/blog/20190730/dhjOUGJQ0Muw.png">
+<meta property="og:image" content="https://xuqian.xiaomujin.club/blog/20190730/TsuhEHbyS1ej.png">
+<meta property="og:updated_time" content="2019-08-02T10:00:18.846Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用node.js搭建简单服务器接收请求返回数据,在本地实现模拟后端数据接口。">
+<meta name="twitter:description" content="引言：&amp;emsp;&amp;emsp;不知道你在项目开发过程中，有没有遇到过有过以下场景： 一般是前端先制作静态页面，同时服务器端创建数据库，搭服务器端架构，写接口； 当接口写完之后，前端或者后端才能嵌套页面。 但是，如果前端页面制作好了，后端接口还没有写好呢？或者如何让前端、后端各自做各自的事情，互相不影响？ 能做到下面这样是不是很好呢？ ——在进行完需求分析和详细设计后，前端、后端一同商量、制作出一份">
+<meta name="twitter:image" content="https://xuqian.xiaomujin.club/blog/20190730/wWpVbR01OgY5.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="记录生活，记录故事" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://www.xiaomujin.club/2019/07/30/使用node搭建简单服务器接收请求返回数据/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>使用node.js搭建简单服务器接收请求返回数据,在本地实现模拟后端数据接口。 | 记录生活，记录故事</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c06e8ff14515b26aea85461e16a55626";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/shiqihennuan" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">记录生活，记录故事</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">身体和灵魂，总要有一个在路上。</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-主页">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>主页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-归档">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">16</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-留言">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/guestbook" rel="section"><i class="menu-item-icon fa fa-fw fa-envelope"></i> <br>留言</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-邻居">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/friends" rel="section"><i class="menu-item-icon fa fa-fw fa-users"></i> <br>邻居</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.xiaomujin.club/2019/07/30/使用node搭建简单服务器接收请求返回数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+      <meta itemprop="name" content="莫子谦">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/author.png">
+ 
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录生活，记录故事">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用node.js搭建简单服务器接收请求返回数据,在本地实现模拟后端数据接口。
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-30 11:00:00" itemprop="dateCreated datePublished" datetime="2019-07-30T11:00:00+08:00">2019-07-30</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-02 18:00:18" itemprop="dateModified" datetime="2019-08-02T18:00:18+08:00">2019-08-02</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/node-js/" itemprop="url" rel="index"><span itemprop="name">node.js</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i> 本文 ≈
+              </span>
+              
+              <span title="本文字数">8.4k</span>
+            </span>字
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i> 阅读时长 ≈
+              </span>
+              
+              <span title="阅读时长">8 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="引言："><a href="#引言：" class="headerlink" title="引言："></a>引言：</h2><p>&emsp;&emsp;不知道你在项目开发过程中，有没有遇到过有过以下场景： 一般是前端先制作静态页面，同时服务器端创建数据库，搭服务器端架构，写接口； 当接口写完之后，前端或者后端才能嵌套页面。 但是，如果前端页面制作好了，后端接口还没有写好呢？或者如何让前端、后端各自做各自的事情，互相不影响？ 能做到下面这样是不是很好呢？ ——在进行完需求分析和详细设计后，前端、后端一同商量、制作出一份接口文档 （其中接口名、参数、返回值名称、返回值类型都定义好） 前端页面制作好之后，直接模拟出该接口的json文件，先去请求该文件，把页面绑定、业务逻辑都处理好。 等前端全部绑定好，同时后端接口写好后，我们只需要前端修改接口地址，其他不用做任何修改。 这样，是不是前端不用等后端接口全部写完才能开始剩下的工作呢？<br><a id="more"></a></p>
+<h1 id="1、起手式，不用说肯定是安装node"><a href="#1、起手式，不用说肯定是安装node" class="headerlink" title="1、起手式，不用说肯定是安装node"></a>1、起手式，不用说肯定是安装node</h1><ul>
+<li>没有什么难度，去<a href="https://nodejs.org/en/" target="_blank" rel="noopener">官网</a>下载，简单粗暴一直下一步，完成安装。可以参考下<a href="https://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="noopener">菜鸟教程</a>中关于node.js安装配置；</li>
+<li>安装node 会自动安装npm包管理工具；</li>
+<li>检查是否有安装node和 npm包管理工具，打开cmd命令行工具，输入node -v 和npm -v，会输出对应的版本号，如下图所示：<br><img src="https://xuqian.xiaomujin.club/blog/20190730/wWpVbR01OgY5.png" alt="查看"></li>
+<li>全局安装 npm ,最好同时安装cnpm 淘宝npm镜像，如果npm 安装依赖包的时候报错，有时候是网络不好，可以使用淘宝镜像cnpm来安装；<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g npm</span><br><span class="line">npm install -g cnpm</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="2、安装express应用程序生成器"><a href="#2、安装express应用程序生成器" class="headerlink" title="2、安装express应用程序生成器"></a>2、安装express应用程序生成器</h1><p><a href="https://expressjs.com/zh-cn/" target="_blank" rel="noopener">官网</a></p>
+<ul>
+<li><p>全局安装<font color="red"><code>express-generator</code></font>;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g express-generator</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>有安装Git Bash Here等第三方命令行工具，我们打开文件管理，进入到想要生成项目的位置后，右键打开Git Bash Here 就可以在当前位置启动命令行工具了；</p>
+</li>
+<li>如果没有安装git等第三方cmd命令行工具，我们打开文件管理，进入到想要生成项目的位置后，直接在地址栏输入cmd，会在当前目录打开cdm命令行工具；</li>
+<li>在我们想要的位置打开命令行工具之后，就可以开始以下步骤：</li>
+</ul>
+<ul>
+<li>创建一个名为myapp的express应用程序<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">express --view=pug myapp</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>成功后会自动在目标位置创建一个名为myapp的项目并生成很多文件，命令行显示效果如下图：<br><img src="https://xuqian.xiaomujin.club/blog/20190730/eVEwVbdEbuYg.png" alt="查看结构"><br>在命令行最下面有提示，<font color="red"><code>install dependencies: cd myapp &amp;&amp; npm install</code></font> 然后 <font color="red"><code>run the app: npm start</code></font>,我们按照提示来；</p>
+<ul>
+<li><p>进入myapp项目；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd myapp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装package.json文件中的依赖；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>网络不好可以用cnpm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://xuqian.xiaomujin.club/blog/20190730/axc3KJVEdLmn.png" alt="运行结果"><br>在浏览器输入localhost:3000，会打开一个页面显示Welcome to Express，说明已经成功启动服务了。</p>
+<h1 id="3、相关配置"><a href="#3、相关配置" class="headerlink" title="3、相关配置"></a>3、相关配置</h1><ul>
+<li>打开myapp项目，可以看到目录下面的结构是这样的；</li>
+</ul>
+<p><img src="https://xuqian.xiaomujin.club/blog/20190730/zLEqOYF0wVLa.png" alt="结构"></p>
+<ul>
+<li><p>这个时候，浏览器打开localhost:3000/users,可以看到页面显示respond with a resource</p>
+</li>
+<li><p>打开routes 文件夹下的users看到以下代码：</p>
+</li>
+</ul>
+<p><img src="https://xuqian.xiaomujin.club/blog/20190730/2n9xQj68a1mH.png" alt="users"></p>
+<ul>
+<li>可以看到页面显示的内容就是users.js文件中返回的内容，我们定义自己想要返回的内容。</li>
+</ul>
+<p><img src="https://xuqian.xiaomujin.club/blog/20190730/kfCiDYL1NWTG.png" alt="users.js数据内容"></p>
+<ul>
+<li>改了之后再请求没有改变，查看命令行信息，304发现我们的请求给我们缓存了； </li>
+</ul>
+<p><img src="https://xuqian.xiaomujin.club/blog/20190730/dhjOUGJQ0Muw.png" alt="缓存信息"></p>
+<ul>
+<li>我们重新启动一下试试，刷新页面返回：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;code&quot;: &quot;000&quot;,</span><br><span class="line">    &quot;message&quot;: &quot;message消息&quot;,</span><br><span class="line">    &quot;lists&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;naem&quot;: &quot;小明&quot;,</span><br><span class="line">            &quot;age&quot;: &quot;12&quot;,</span><br><span class="line">            &quot;sex&quot;: &quot;男&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;naem&quot;: &quot;小红&quot;,</span><br><span class="line">            &quot;age&quot;: &quot;12&quot;,</span><br><span class="line">            &quot;sex&quot;: &quot;女&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这样虽然可以请求，但是有缓存问题，而且接口多的话每次都得配置一个路径，太复杂，所以要封装一下，重复使用，每次请求重新请求不加载缓存。</li>
+</ul>
+<p>在项目下新建一个config文件夹并新建一个api.js,配置一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">// config/api.js</span><br><span class="line"></span><br><span class="line">var fs = require(&apos;fs&apos;);</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 检查请求的路径是否存在</span><br><span class="line"> * @param apiName 请求路径</span><br><span class="line"> * @param method  请求方式</span><br><span class="line"> * @param params   请求参数</span><br><span class="line"> * @param res 返回请求</span><br><span class="line"> */</span><br><span class="line">function getDataFromPath (apiName,method,params,res)&#123;</span><br><span class="line">    if(apiName)&#123;</span><br><span class="line">        fs.access(</span><br><span class="line">            // 提取请求路径中的js文件</span><br><span class="line">            apiName.substring(1)+&apos;.js&apos;,</span><br><span class="line">            // 回调函数，检查请求的路径是否有效失败返回一个错误参数</span><br><span class="line">            function(err)&#123;</span><br><span class="line">                if(!err)&#123;</span><br><span class="line">                    // 每次请求都清除模块缓存重新请求</span><br><span class="line">                    delete require.cache[require.resolve(&apos;..&apos;+apiName)];</span><br><span class="line">                    try&#123;</span><br><span class="line">                        addApiResult(res,require(&apos;..&apos;+apiName).getData(method,params));</span><br><span class="line">                    &#125;catch(e)&#123;</span><br><span class="line">                        console.error(e.stack);</span><br><span class="line">                        res.status(500).send(apiName+&apos; has an error,please check the code.&apos;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    addApiResult(res);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        );</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        addApiResult(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">/**</span><br><span class="line"> *  响应头</span><br><span class="line"> * @param res</span><br><span class="line"> */</span><br><span class="line">function addApiHead(res)&#123;</span><br><span class="line">    res.setHeader(&apos;Content-Type&apos;, &apos;application/json;charset=utf-8&apos;);</span><br><span class="line">    // 跨域</span><br><span class="line">    res.header(&apos;Access-Control-Allow-Origin&apos;, &apos;*&apos;);</span><br><span class="line">    res.header(&apos;Access-Control-Allow-Headers&apos;, &apos;Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild&apos;);</span><br><span class="line">    res.header(&apos;Access-Control-Allow-Methods&apos;, &apos;PUT, POST, GET, DELETE, OPTIONS&apos;);</span><br><span class="line">    // 控制http缓存</span><br><span class="line">    res.header(&quot;Cache-Control&quot;, &quot;no-cache, no-store, must-revalidate&quot;);</span><br><span class="line">    res.header(&quot;Pragma&quot;, &quot;no-cache&quot;);</span><br><span class="line">    res.header(&quot;Expires&quot;, 0);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 返回参数，如无返回参数返回404</span><br><span class="line"> * @param res</span><br><span class="line"> * @param result</span><br><span class="line"> */</span><br><span class="line">function addApiResult(res,result)&#123;</span><br><span class="line">    if(result)&#123;</span><br><span class="line">        res.send(result);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        res.status(404).send();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*请求方式*/</span><br><span class="line">// get</span><br><span class="line">exports.get = function(req, res)&#123;</span><br><span class="line">    addApiHead(res);</span><br><span class="line">    getDataFromPath(req.path,&apos;GET&apos;,req.query,res);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// post</span><br><span class="line">exports.post = function(req, res)&#123;</span><br><span class="line">    addApiHead(res);</span><br><span class="line">    getDataFromPath(req.path,&apos;POST&apos;,req.body,res);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>打开根目录下app.js，在上面引入刚刚新建的文件api.js;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//引入API</span><br><span class="line">var api = require(&apos;./config/api&apos;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>替换请求配置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/*配置请求*/</span><br><span class="line">app.get(&apos;/&apos;, function(req, res)&#123;</span><br><span class="line">    res.send(&apos;hello world&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">app.get(&apos;/api/*&apos;, api.get);</span><br><span class="line">app.post(&apos;/api/*&apos;, api.post);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>app.js最终代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">// app.js</span><br><span class="line"></span><br><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var path = require(&apos;path&apos;);</span><br><span class="line">var favicon = require(&apos;serve-favicon&apos;);</span><br><span class="line">var logger = require(&apos;morgan&apos;);</span><br><span class="line">var cookieParser = require(&apos;cookie-parser&apos;);</span><br><span class="line">var bodyParser = require(&apos;body-parser&apos;);</span><br><span class="line"></span><br><span class="line">var app = express();</span><br><span class="line">/*引入api*/</span><br><span class="line">var api = require(&apos;./config/api&apos;);</span><br><span class="line"></span><br><span class="line">// view engine setup</span><br><span class="line">app.set(&apos;views&apos;, path.join(__dirname, &apos;views&apos;));</span><br><span class="line">app.set(&apos;view engine&apos;, &apos;pug&apos;);</span><br><span class="line"></span><br><span class="line">// uncomment after placing your favicon in /public</span><br><span class="line">//app.use(favicon(path.join(__dirname, &apos;public&apos;, &apos;favicon.ico&apos;)));</span><br><span class="line">app.use(logger(&apos;dev&apos;));</span><br><span class="line">app.use(bodyParser.json());</span><br><span class="line">app.use(bodyParser.urlencoded(&#123; extended: false &#125;));</span><br><span class="line">app.use(cookieParser());</span><br><span class="line">app.use(express.static(path.join(__dirname, &apos;public&apos;)));</span><br><span class="line"></span><br><span class="line">//配置请求</span><br><span class="line">app.get(&apos;/&apos;, function(req, res)&#123;</span><br><span class="line">    res.send(&apos;hello world&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">app.get(&apos;/api/*&apos;, api.get);</span><br><span class="line">app.post(&apos;/api/*&apos;, api.post);</span><br><span class="line">app.options(&apos;/api/*&apos;, function(req, res, next)&#123;</span><br><span class="line">    res.header(&apos;Access-Control-Allow-Origin&apos;, &apos;*&apos;);</span><br><span class="line">    res.header(&apos;Access-Control-Allow-Headers&apos;, &apos;Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild&apos;);</span><br><span class="line">    res.header(&apos;Access-Control-Allow-Methods&apos;, &apos;PUT, POST, GET, DELETE, OPTIONS&apos;);</span><br><span class="line">    res.sendStatus(200);/*让options请求快速返回*/</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">module.exports = app;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>根目录新建api文件夹，新建demo.js;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">// api/demo.js</span><br><span class="line"></span><br><span class="line">var dataDemo=&#123;</span><br><span class="line">    &apos;code&apos;:&apos;000&apos;,</span><br><span class="line">    &apos;message&apos;:&apos;message消息&apos;,</span><br><span class="line">    &apos;lists&apos;:[</span><br><span class="line">        &#123;</span><br><span class="line">            &apos;naem&apos;:&apos;小明&apos;,</span><br><span class="line">            &apos;age&apos;: &apos;12&apos;,</span><br><span class="line">            &apos;sex&apos;:&apos;男&apos;</span><br><span class="line">        &#125;,&#123;</span><br><span class="line">            &apos;naem&apos;:&apos;小红&apos;,</span><br><span class="line">            &apos;age&apos;: &apos;12&apos;,</span><br><span class="line">            &apos;sex&apos;:&apos;女&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line">exports.getData = function(method,data)&#123;</span><br><span class="line">    var backData=&#123;</span><br><span class="line">        &quot;code&quot;:&apos;000&apos;,</span><br><span class="line">        &quot;msg&quot;:&quot;&quot;,</span><br><span class="line">        &quot;data&quot;:dataDemo</span><br><span class="line">    &#125;</span><br><span class="line">    if(method==&apos;DELETE&apos;)&#123;</span><br><span class="line">        backData=&#123;</span><br><span class="line">            &quot;code&quot;:&apos;999&apos;,</span><br><span class="line">            &quot;msg&quot;:&quot;不支持DELETE方法&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return JSON.stringify(backData);</span><br><span class="line">&#125;kData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>重新运行npm start，浏览器打开localhost:3000，此时应该显示的是hello world；</p>
+</li>
+<li><p>打开localhost:3000/api/demo,页面显示</p>
+</li>
+</ul>
+<p><img src="https://xuqian.xiaomujin.club/blog/20190730/TsuhEHbyS1ej.png" alt="页面显示"><br>以上都成功了，那就说明配置成功了，复制demo.js文件命名为demo2.js,改动一下数据，浏览器访问localhost:3000/api/demo2应该也是可以的；</p>
+<h1 id="4、使用"><a href="#4、使用" class="headerlink" title="4、使用"></a>4、使用</h1><p>假如线上接口是 <a href="https://xiaomujin.club/mydata/index/data/list,我们在api文件夹按照路径新建文件夹和文件即可" target="_blank" rel="noopener">https://xiaomujin.club/mydata/index/data/list,我们在api文件夹按照路径新建文件夹和文件即可</a>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">├── api</span><br><span class="line">│   └── mydata</span><br><span class="line">│       └── index</span><br><span class="line">│           └── data</span><br><span class="line">│               └── list.js</span><br></pre></td></tr></table></figure></p>
+<p>开发的时候指向本地服务器器接口，联调测试上线的时候只需要把指向本地服务器地址替换成线上地址一下就可以了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    $(function () &#123;</span><br><span class="line">        // var baseUrl = &apos;https://xiaomujin.club&apos;;   //线上地址</span><br><span class="line">        var baseUrl = &apos;http://localhost:3000/api&apos;;  //本地服务器地址</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            url: baseUrl+&apos;/mydata/index/data/list&apos;,</span><br><span class="line">            contentType: &apos;application/json&apos;,</span><br><span class="line">            type: &apos;POST&apos;,</span><br><span class="line">            timeout: 5000,</span><br><span class="line">            dataType:&apos;JSON&apos;,</span><br><span class="line">            data: JSON.stringify(&#123;schoolId: 123&#125;),</span><br><span class="line">            success: function (res) &#123;</span><br><span class="line">                if(res.code == &apos;000&apos;)&#123;</span><br><span class="line">                    console.log(res);</span><br><span class="line">                    $(&apos;body&apos;).html(JSON.stringify(res));</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    alert(res.message);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            Error: function (xhr, type, errorThrown) &#123;</span><br><span class="line">                console.log(JSON.stringify(xhr));</span><br><span class="line">                console.log(type);</span><br><span class="line">                console.log(errorThrown);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:16px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+    <div>
+    
+        
+    
+  </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>木槿前端不求人，有空就来坐坐。</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/money_wx.jpg" alt="莫子谦 微信">
+        <p>微信</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/money_z.jpg" alt="莫子谦 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>莫子谦</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://www.xiaomujin.club/2019/07/30/使用node搭建简单服务器接收请求返回数据/" title="使用node.js搭建简单服务器接收请求返回数据,在本地实现模拟后端数据接口。">https://www.xiaomujin.club/2019/07/30/使用node搭建简单服务器接收请求返回数据/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+    
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/node-js/" rel="tag"><i class="fa fa-tag"></i> node.js</a>
+          
+            <a href="/tags/前端/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+          
+            <a href="/tags/本地模拟后端数据接口/" rel="tag"><i class="fa fa-tag"></i> 本地模拟后端数据接口</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/26/Markdown基本语法/" rel="next" title="Markdown基本语法使用">
+                <i class="fa fa-chevron-left"></i> Markdown基本语法使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/30/本地请求数据的第二种方法/" rel="prev" title="第二种方法，请求本地 json 文件，返回数据。">
+                第二种方法，请求本地 json 文件，返回数据。 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+  
+    
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NTM2Mi8yMTg3NQ=="></div>
+  </div>
+  
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <a href="/">
+<div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="/images/author.png" alt="莫子谦">
+  
+  <p class="site-author-name" itemprop="name">莫子谦</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+</a>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=&site=2035805156&menu=yes" title="QQ &rarr; http://wpa.qq.com/msgrd?v=3&uin=&site=2035805156&menu=yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i>QQ</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/xuqssq" title="GitHub &rarr; https://github.com/xuqssq" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://space.bilibili.com/375505919" title="B站 &rarr; https://space.bilibili.com/375505919" rel="noopener" target="_blank"><i class="fa fa-fw fa-tv"></i>B站</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.zhihu.com/people/ji-li-77-13/activities" title="知乎 &rarr; https://www.zhihu.com/people/ji-li-77-13/activities" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>知乎</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/6289046268/profile?topnav=1&wvr=6&is_all=1" title="微博 &rarr; https://weibo.com/6289046268/profile?topnav=1&wvr=6&is_all=1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:xq-ambition@qq.com" title="E-Mail &rarr; mailto:xq-ambition@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://blog.csdn.net/weixin_43824680" title="CSDN &rarr; https://blog.csdn.net/weixin_43824680" rel="noopener" target="_blank"><i class="fa fa-fw fa-leanpub"></i>CSDN</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.jianshu.com/u/2838cbfa1fbf" title="简书 &rarr; https://www.jianshu.com/u/2838cbfa1fbf" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>简书</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.linkedin.com/in/%E8%B0%A6-%E8%83%A5-1baa84171/detail/recent-activity/" title="领英 &rarr; https://www.linkedin.com/in/%E8%B0%A6-%E8%83%A5-1baa84171/detail/recent-activity/" rel="noopener" target="_blank"><i class="fa fa-fw fa-linkedin"></i>领英</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.douban.com/people/199853206/" title="豆瓣 &rarr; https://www.douban.com/people/199853206/" rel="noopener" target="_blank"><i class="fa fa-fw fa-film"></i>豆瓣</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="http://www.renren.com/971655312/profile" title="人人网 &rarr; http://www.renren.com/971655312/profile" rel="noopener" target="_blank"><i class="fa fa-fw fa-renren"></i>人人网</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="skype:17620624964?call|chat" title="Skype &rarr; skype:17620624964?call|chat" rel="noopener" target="_blank"><i class="fa fa-fw fa-skype"></i>Skype</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+      <div class="links-of-blogroll-title">
+        <!-- modify icon to fire by szw -->
+        <i class="fa fa-history fa-" aria-hidden="true"></i>
+        近期文章
+      </div>
+      <ul class="links-of-blogroll-list">
+        
+        
+          <li>
+            <a href="/2019/10/03/学习node.js的第七天/" title="七天搞定node.js---第七天" target="_blank">七天搞定node.js---第七天</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/01/学习node.js的第六天/" title="七天搞定node.js---第六天" target="_blank">七天搞定node.js---第六天</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/25/学习node.js的第五天/" title="七天搞定node.js---第五天" target="_blank">七天搞定node.js---第五天</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/15/学习node.js的第四天/" title="七天搞定node.js---第四天" target="_blank">七天搞定node.js---第四天</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/05/特殊字符转码编译/" title="Hexo Markdown 特殊字符转义" target="_blank">Hexo Markdown 特殊字符转义</a>
+          </li>
+        
+      </ul>
+    </div>
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言："><span class="nav-number">1.</span> <span class="nav-text">引言：</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#1、起手式，不用说肯定是安装node"><span class="nav-number"></span> <span class="nav-text">1、起手式，不用说肯定是安装node</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、安装express应用程序生成器"><span class="nav-number"></span> <span class="nav-text">2、安装express应用程序生成器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、相关配置"><span class="nav-number"></span> <span class="nav-text">3、相关配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4、使用"><span class="nav-number"></span> <span class="nav-text">4、使用</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">粤ICP备19050326号 </a>&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">莫子谦</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+ <div>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <i class="fa fa-eye"></i> 本站总访问量:
+                <span id="busuanzi_value_site_pv"></span>次 |
+                <i class="fa fa-child"></i> 本站访客数:
+                <span id="busuanzi_value_site_uv"></span>人次<br>
+              <span class="with-love" id="heart" style="color:red;"><i class="fa fa-heartbeat"></i></span><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><br>
+                 
+                <script>
+                    var now = new Date();
+
+                    function createtime() {
+                        var grt = new Date("03/01/2019 00:00:00"); //在此处修改你的建站时间
+                        now.setTime(now.getTime() + 250);
+                        days = (now - grt) / 1000 / 60 / 60 / 24;
+                        dnum = Math.floor(days);
+                        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                        hnum = Math.floor(hours);
+                        if (String(hnum).length == 1) {
+                            hnum = "0" + hnum;
+                        }
+                        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                        mnum = Math.floor(minutes);
+                        if (String(mnum).length == 1) {
+                            mnum = "0" + mnum;
+                        }
+                        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                        snum = Math.round(seconds);
+                        if (String(snum).length == 1) {
+                            snum = "0" + snum;
+                        }
+                        document.getElementById("timeDate").innerHTML = "Run for " + dnum + " Days ";
+                        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+                    }
+                    setInterval("createtime()", 250);
+                </script>
+            </div>
+            <div class="theme-info">
+  <div class="powered-by"></div>
+  
+    <span class="post-meta-divider"></span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-file-word-o"></i> 本站 ≈
+    </span>
+    
+    <span title="站点总字数">180k</span>
+  字
+</div>
+<br><a id="translateLink" href="javascript:translatePage();">繁體</a>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+<!-- 页面点击出现4级单词-->
+<!--<script type="text/javascript" src="/js/src/cet4.js"></script>-->
+<!-- 样式二（飘动的彩带） -->
+<!-- <script src="https://g.joyinshare.com/hc/piao.js" type="text/javascript"></script>-->
+<script type="text/javascript" src="js/src/tw_cn.js"></script>
+<script type="text/javascript">
+var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+var translateDelay = 100; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+var cookieDomain = "https://www.xiaomujin.club"; //Cookie地址, 一定要设定, 通常为你的网址
+var msgToTraditionalChinese = "繁體"; //此处可以更改为你想要显示的文字
+var msgToSimplifiedChinese = "简体"; //同上，但两处均不建议更改
+var translateButtonId = "translateLink"; //默认互换id
+translateInitilization();
+</script>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d3bbc46123e2e92" async="async"></script>
+  </div>
+
+
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+    
+
+
+
+<script>
+  window.livereOptions = {
+    refer: '2019/07/30/使用node搭建简单服务器接收请求返回数据/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+
+  
+
+  <script src="/live2d-widget/autoload.js"></script>
+</body>
+
+</html>
+
